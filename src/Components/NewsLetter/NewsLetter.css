@@ -1,50 +1,106 @@
-.newsletter{
-    width: 100%;
-    height: 50vh;
+.newsletter {
+    max-width: 1200px;
+    width: calc(100% - 160px);
+    margin: 0 auto 120px auto;
+    padding: 80px 24px;
+    background: linear-gradient(135deg, #f3e8ff 0%, #fae8ff 100%);
+    border-radius: var(--radius-md);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: auto;
-    padding: 0px 140px;
-    margin-bottom: 150px;
-    background: 180deg,#fde1ff 0%, #e1ffea22 60%;
-    gap: 30px;
+    text-align: center;
+    gap: 20px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
- 
-.newsletter h1{
-    color: #454545;
-    font-size: 55px;
-    font-weight: 600;
+
+.newsletter h1 {
+    color: var(--text-dark);
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.2;
 }
-.newsletter p{
-    color: #454545;
-    font-size: 20px;
+
+.newsletter p {
+    color: var(--text-muted);
+    font-size: 18px;
+    font-weight: 500;
+    max-width: 500px;
+    margin-bottom: 10px;
 }
-.newsletter div{
+
+.newsletter div {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background: white;
-    width: 700px;
-    height: 50px;
-    border-radius: 80px;
-    border: 1px solid #e3e3e3;
+    background: var(--white);
+    width: 100%;
+    max-width: 600px;
+    height: 60px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    padding: 4px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
 }
-.newsletter input{
-    width: 500px;
-    margin-left: 30px;
+
+.newsletter div:focus-within {
+    border-color: rgba(255, 65, 108, 0.3);
+    box-shadow: 0 0 0 4px rgba(255, 65, 108, 0.1);
+}
+
+.newsletter input {
+    flex: 1;
+    padding: 0 24px;
     border: none;
     outline: none;
-    color: #616161;
+    color: var(--text-dark);
+    font-family: inherit;
     font-size: 16px;
+    background: transparent;
 }
-.newsletter div button{
-    width: 200px;
-    height: 50px;
-    border-radius: 80px;
-    background: black;
-    color: white;
-    font-size: 16px;
+
+.newsletter input::placeholder {
+    color: #94a3b8;
+}
+
+.newsletter div button {
+    height: 100%;
+    padding: 0 32px;
+    border-radius: var(--radius-full);
+    background: var(--text-dark);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
     cursor: pointer;
+    transition: var(--transition);
+}
+
+.newsletter div button:hover {
+    background: #000000;
+    transform: scale(1.02);
+}
+
+/* Responsiveness */
+@media (max-width: 992px) {
+    .newsletter {
+        width: calc(100% - 48px);
+        padding: 60px 24px;
+        margin-bottom: 80px;
+    }
+    .newsletter h1 {
+        font-size: 32px;
+    }
+    .newsletter p {
+        font-size: 16px;
+    }
+    .newsletter div {
+        height: 54px;
+    }
+    .newsletter div button {
+        padding: 0 20px;
+        font-size: 14px;
+    }
 }
