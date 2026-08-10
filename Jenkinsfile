@@ -1,14 +1,10 @@
 pipeline {
     agent any
 
-    tools {
-        // Automatically installs/provisions NodeJS configured in Jenkins Tools named 'node'
-        // If your Jenkins uses docker agents or pre-installed node, you can remove/adjust this block.
-        nodejs 'node'
-    }
-
     environment {
-        CI = 'true'
+        IMAGE_NAME = 'ecommerce-frontend'
+        CONTAINER_NAME = 'ecommerce-app'
+        PORT_MAPPING = '3000:80'
     }
 
     stages {
@@ -18,64 +14,30 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Installing project dependencies...'
-                // Detects OS and runs the appropriate script runner (bat on Windows, sh on Unix/Linux)
-                script {
-                    if (isUnix()) {
-                        sh 'npm ci'
-                    } else {
-                        bat 'npm ci'
-                    }
-                }
+                echo 'Building Docker image...'
+                sh "docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} ."
+                sh "docker tag ${IMAGE_NAME}:${BUILD_NUMBER} ${IMAGE_NAME}:latest"
             }
         }
 
-        stage('Lint') {
+        stage('Deploy Container') {
             steps {
-                echo 'Running ESLint checks...'
-                script {
-                    if (isUnix()) {
-                        sh 'npm run lint'
-                    } else {
-                        bat 'npm run lint'
-                    }
-                }
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building production assets...'
-                script {
-                    if (isUnix()) {
-                        sh 'npm run build'
-                    } else {
-                        bat 'npm run build'
-                    }
-                }
-            }
-        }
-
-        stage('Archive Artifacts') {
-            steps {
-                echo 'Archiving production build (dist folder)...'
-                archiveArtifacts artifacts: 'dist/**', onlyIfSuccessful: true
+                echo 'Deploying application container...'
+                sh "docker stop ${CONTAINER_NAME} || true"
+                sh "docker rm ${CONTAINER_NAME} || true"
+                sh "docker run -d --name ${CONTAINER_NAME} -p ${PORT_MAPPING} ${IMAGE_NAME}:latest"
             }
         }
     }
 
     post {
-        always {
-            echo 'Cleaning workspace...'
-            cleanWs()
-        }
         success {
-            echo 'Pipeline execution succeeded!'
+            echo 'Pipeline completed successfully! Application is live.'
         }
         failure {
-            echo 'Pipeline execution failed. Please check build logs.'
+            echo 'Pipeline failed. Please check the logs.'
         }
     }
 }
