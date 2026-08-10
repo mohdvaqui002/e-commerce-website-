@@ -4,10 +4,85 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>E-Commerce</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Shopper | Premium Fashion E-Commerce Store</title>
+    <meta name="title" content="Shopper | Premium Fashion E-Commerce Store" />
+    <meta name="description" content="Discover the latest trends in fashion. Shop exclusive collections for men, women, and kids with premium quality and unmatched style." />
+    <meta name="keywords" content="e-commerce, fashion, online shopping, clothing, apparel, men's clothing, women's fashion, kids wear" />
+    <meta name="author" content="Shopper Inc." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://github.com/mohdvaqui002/e-commerce-website-" />
+    <meta property="og:title" content="Shopper | Premium Fashion E-Commerce Store" />
+    <meta property="og:description" content="Discover the latest trends in fashion. Shop exclusive collections for men, women, and kids." />
+    <meta property="og:image" content="/src/assets/logo.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://github.com/mohdvaqui002/e-commerce-website-" />
+    <meta property="twitter:title" content="Shopper | Premium Fashion E-Commerce Store" />
+    <meta property="twitter:description" content="Discover the latest trends in fashion. Shop exclusive collections for men, women, and kids." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Loading Splash Screen Style -->
+    <style>
+      #initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        color: #ffffff;
+      }
+      .spinner {
+        width: 48px;
+        height: 48px;
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        border-top: 4px solid #ff4141;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      .loader-text {
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        animation: pulse 1.5s ease-in-out infinite;
+        background: linear-gradient(to right, #ff4141, #ff7a00);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Loading Splash Screen (will be cleared when React mounts) -->
+      <div id="initial-loader">
+        <div class="spinner"></div>
+        <div class="loader-text">SHOPPER</div>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
