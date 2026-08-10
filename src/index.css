@@ -2,20 +2,20 @@
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
   
-  --primary-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+  --primary-gradient: linear-gradient(135deg, #f43397 0%, #ff529a 100%);
   --secondary-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   
-  --text-dark: #0f172a;
-  --text-muted: #64748b;
+  --text-dark: #353535;
+  --text-muted: #666666;
   --bg-light: #f8fafc;
   --white: #ffffff;
   
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --shadow-sm: 0 2px 8px -1px rgba(15, 23, 42, 0.05);
-  --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
-  --shadow-lg: 0 20px 40px -15px rgba(15, 23, 42, 0.12);
-  --radius-sm: 8px;
-  --radius-md: 16px;
+  --transition: all 0.2s ease;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.12);
+  --radius-sm: 4px;
+  --radius-md: 8px;
   --radius-full: 9999px;
 }
 
